@@ -1,13 +1,13 @@
-package com.example.ucareapk.pantallas
+package com.example.ucareapk.pantallaslogin
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -41,6 +41,7 @@ import com.example.ucareapk.ui.theme.dmsansFamily
 fun PantallaSignUp(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
+            .fillMaxSize()
             .requiredWidth(400.dp)
             .requiredHeight(800.dp),
         contentAlignment = Alignment.Center
@@ -124,12 +125,25 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    CustomTextField(iconId = R.drawable.iconusuario, contentDescription = "iconusuario")
+                    CustomTextField(
+                        label = "Usuario",
+                        iconId = R.drawable.iconusuario,
+                        contentDescription = "iconusuario"
+                    )
                     Spacer(modifier = Modifier.height(25.dp))
-                    CustomTextField(iconId = R.drawable.iconcorreo, contentDescription = "iconcorreo")
+                    CustomTextField(
+                        label = "Correo",
+                        iconId = R.drawable.iconcorreo,
+                        contentDescription = "iconcorreo"
+                    )
                     Spacer(modifier = Modifier.height(25.dp))
-                    CustomTextField(iconId = R.drawable.iconcontrasenia, contentDescription = "iconcontrasenia")
+                    CustomTextField(
+                        label = "Contraseña",
+                        iconId = R.drawable.iconcontrasenia,
+                        contentDescription = "iconcontrasenia"
+                    )
                 }
+
             }
 
             Spacer(modifier = Modifier.height(40.dp)) // Espacio entre los TextField y el botón "Continuar"
@@ -185,48 +199,50 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTextField(iconId: Int, contentDescription: String) {
-    Box(
-        modifier = Modifier
-            .requiredWidth(272.dp)
-            .requiredHeight(49.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .requiredWidth(272.dp)
-                .requiredHeight(49.dp)
-                .clip(shape = RoundedCornerShape(16.dp))
-                .background(color = Color(0xfff2f1ef))  // Color de fondo personalizado
-                .border(
-                    border = BorderStroke(1.dp, Color(0xff9ca57b)),  // Color y grosor del borde
-                    shape = RoundedCornerShape(16.dp)
-                )
-        )
-        TextField(
-            value = "",
-            onValueChange = {},
-            leadingIcon = {
-                Image(
-                    painter = painterResource(id = iconId),
-                    contentDescription = contentDescription,
-                    modifier = Modifier.requiredSize(20.dp)
-                )
-            },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xfff2f1ef),  // Color de fondo del TextField
-                cursorColor = Color.Black,  // Color del cursor
-                focusedIndicatorColor = Color.Transparent,  // Color del indicador cuando está enfocado
-                unfocusedIndicatorColor = Color.Transparent  // Color del indicador cuando no está enfocado
-            ),
-            textStyle = TextStyle(fontFamily = dmsansFamily),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .requiredWidth(272.dp)
-                .requiredHeight(49.dp)
-                .clip(shape = RoundedCornerShape(16.dp))
-        )
-    }
+fun CustomTextField(
+    modifier: Modifier = Modifier,
+    label: String,
+    iconId: Int,
+    contentDescription: String
+) {
+    TextField(
+        value = "",
+        onValueChange = {},
+        label = {
+            Text(
+                text = label,
+                color = Color(0xff6c5352).copy(alpha = 0.6f),
+                style = TextStyle(fontSize = 17.sp),
+                fontFamily = dmsansFamily,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.requiredHeight(height = 21.dp)
+            )
+        },
+        leadingIcon = {
+            Image(
+                painter = painterResource(id = iconId),
+                contentDescription = contentDescription,
+                modifier = Modifier.requiredSize(size = 20.dp)
+            )
+        },
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color(0xfff2f1ef),
+            cursorColor = Color.Black,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        textStyle = TextStyle(fontFamily = dmsansFamily),
+        modifier = modifier
+            .requiredWidth(width = 272.dp)
+            .requiredHeight(height = 49.dp)
+            .clip(shape = RoundedCornerShape(16.dp))
+            .border(
+                border = BorderStroke(1.dp, Color(0xfff2f1ef)),
+                shape = RoundedCornerShape(16.dp)
+            )
+    )
 }
+
 
 @Composable
 fun GrupoRegresar(modifier: Modifier = Modifier) {
