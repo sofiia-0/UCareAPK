@@ -4,16 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -44,10 +35,10 @@ import com.example.ucareapk.ui.components.GrupoRegresar
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaSignUp(modifier: Modifier = Modifier) {
-    var usuario by remember { mutableStateOf("") }
+fun FramePantallaLogIn(modifier: Modifier = Modifier) {
     var correo by remember { mutableStateOf("") }
     var contraseña by remember { mutableStateOf("") }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -96,7 +87,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append("Creá tu cuenta en \n")
+                        append("Iniciá Sesión en \n")
                     }
                     withStyle(
                         style = SpanStyle(
@@ -116,7 +107,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append(" ヾ(๑•｡•๑)◞ • *✰")
+                        append(" ☆⌒(ゝ｡ ∂)")
                     }
                 },
                 modifier = Modifier
@@ -134,15 +125,6 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    CustomTextField(
-                        label = "Usuario",
-                        iconId = R.drawable.iconusuario,
-                        contentDescription = "iconusuario",
-                        text = usuario,
-                        onTextChanged = { usuario = it }
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-
                     CustomTextField(
                         label = "Correo",
                         iconId = R.drawable.iconcorreo,
@@ -164,7 +146,6 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
             }
 
             Spacer(modifier = Modifier.height(40.dp)) // Espacio entre los TextField y el botón "Continuar"
-
 
             Box(
                 modifier = Modifier
@@ -211,11 +192,10 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
             }
         }
     }
-
 }
 
 @Preview
 @Composable
-private fun PantallaSignUpPreview() {
-    PantallaSignUp(Modifier)
+private fun FramePantallaLogInPreview() {
+    FramePantallaLogIn(Modifier)
 }
