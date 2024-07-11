@@ -1,4 +1,8 @@
-# UCare - Un sistema de cuidado para tu bienestar
+# UCare - Innovando el cuidado estudiantil
+
+<p align="center">
+  <img src="app/src/main/res/drawable/ucarefront.png" alt="Captura de UCare">
+</p>
 
 UCare es una plataforma diseñada para promover el bienestar estudiantil mediante herramientas avanzadas de gestión personal y emocional. Permite a los estudiantes organizar sus tareas académicas y personales de manera eficiente, recibir recordatorios personalizables, y seguir su estado de ánimo a lo largo del tiempo. Además, ofrece recursos y recomendaciones para mejorar la calidad de vida y el rendimiento académico.
 
