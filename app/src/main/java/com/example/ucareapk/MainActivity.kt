@@ -26,11 +26,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            NavHost(navController = navController, startDestination = "home") {
-                composable("home") { PantallaHome(navController) }
-                composable("actividad") { PantallaActividad(navController, padding = PaddingValues()) }
-            }
+
         }
     }
 }

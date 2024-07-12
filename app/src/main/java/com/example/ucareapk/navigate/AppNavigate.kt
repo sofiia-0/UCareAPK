@@ -21,11 +21,12 @@ fun AppNavigate() {
 
     NavHost(navController = navController, startDestination = "pantallaInicio") {
         composable("pantallaInicio") { PantallaInicio(onNavigateToSignUp = { navController.navigate("pantallaSignUp") }) }
-        composable("pantallaSignUp") { PantallaSignUp() }
+        composable("pantallaSignUp") { PantallaSignUp(navController) }
     }
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { PantallaHome(navController) }
         composable("actividad") { PantallaActividad(navController, padding = PaddingValues()) }
     }
+
 }

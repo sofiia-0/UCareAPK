@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ucareapk.R
+import com.example.ucareapk.pantallasActividad.BackButtonAct
 import com.example.ucareapk.ui.components.CustomTextField
 import com.example.ucareapk.ui.components.RegresarButton
 import com.example.ucareapk.ui.theme.dmsansFamily
@@ -46,7 +47,7 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                     .requiredWidth(210.dp)
                     .requiredHeight(250.dp)
             ) {
-                RegresarButton()
+                BackButtonAct(navController)
                 Image(
                     painter = painterResource(id = R.drawable.pandaicon),
                     contentDescription = "Panda",

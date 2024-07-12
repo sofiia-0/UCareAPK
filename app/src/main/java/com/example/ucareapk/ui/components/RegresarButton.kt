@@ -30,6 +30,7 @@ fun RegresarButton(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 26.dp)
             , contentAlignment = Alignment.TopStart
         ) {
+
             Text(
                 text = "Regresar",
                 color = Color(0xff715857),

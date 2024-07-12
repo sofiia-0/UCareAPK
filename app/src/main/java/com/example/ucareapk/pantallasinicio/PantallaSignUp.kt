@@ -19,13 +19,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.ucareapk.R
+import com.example.ucareapk.pantallasActividad.BackButtonAct
 import com.example.ucareapk.ui.components.CustomTextField
 import com.example.ucareapk.ui.components.RegresarButton
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaSignUp(modifier: Modifier = Modifier) {
+fun PantallaSignUp(navController: NavController, modifier: Modifier = Modifier) {
     var usuario by remember { mutableStateOf("") }
     var correo by remember { mutableStateOf("") }
     var contraseña by remember { mutableStateOf("") }
@@ -46,7 +48,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                     .requiredWidth(210.dp)
                     .requiredHeight(250.dp)
             ) {
-                RegresarButton()
+                BackButtonAct(navController)
                 Image(
                     painter = painterResource(id = R.drawable.pandaicon),
                     contentDescription = "Panda",
