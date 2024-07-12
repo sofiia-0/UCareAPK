@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.example.ucareapk.pantallasinicio.PantallaHome
 import com.example.ucareapk.pantallasinicio.PantallaSignUp
 import com.example.ucareapk.ui.theme.UCareAPKTheme
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             UCareAPKTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallaSignUp(modifier = Modifier.padding(innerPadding))
+                    PantallaHome(modifier = Modifier.padding(innerPadding))
                 }
 
             }
