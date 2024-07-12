@@ -53,6 +53,7 @@ fun PantallaHome(navController: NavController, modifier: Modifier = Modifier) {
                 contentDescription = "IconHome",
                 modifier = Modifier
                     .size(21.dp)
+                    .clickable { navController.popBackStack() }
             )
             Image(
                 painter = painterResource(id = R.drawable.iconrecordatorio),
