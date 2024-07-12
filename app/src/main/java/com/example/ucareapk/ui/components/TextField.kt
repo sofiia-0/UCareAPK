@@ -3,6 +3,7 @@ package com.example.ucareapk.ui.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
@@ -12,14 +13,19 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,8 +36,12 @@ fun CustomTextField(
     iconId: Int,
     contentDescription: String,
     text: String,
-    onTextChanged: (String) -> Unit
+    onTextChanged: (String) -> Unit,
+    isPassword: Boolean = false,
+    passwordVisible: Boolean = false,
+    onPasswordVisibilityChanged: (() -> Unit)? = null
 ) {
+    val visualTransformation = if (isPassword && !passwordVisible) PasswordVisualTransformation() else VisualTransformation.None
     TextField(
         value = text,
         onValueChange = onTextChanged,
@@ -52,6 +62,19 @@ fun CustomTextField(
                 modifier = Modifier.requiredSize(20.dp)
             )
         },
+        trailingIcon = {
+            if (isPassword) {
+                val iconId = if (passwordVisible) R.drawable.iconojooculto else R.drawable.iconojo
+                Image(
+                    painter = painterResource(id = iconId),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .requiredSize(20.dp)
+                        .clickable { onPasswordVisibilityChanged?.invoke() }
+                )
+            }
+        },
+        visualTransformation = visualTransformation,
         colors = TextFieldDefaults.textFieldColors(
             containerColor = Color(0xfff2f1ef),
             cursorColor = Color.Black,
@@ -69,4 +92,3 @@ fun CustomTextField(
             )
     )
 }
-
