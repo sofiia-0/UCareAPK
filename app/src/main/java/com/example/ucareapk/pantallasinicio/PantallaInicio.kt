@@ -1,4 +1,4 @@
-package com.example.ucareapk.pantallaslogin
+package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

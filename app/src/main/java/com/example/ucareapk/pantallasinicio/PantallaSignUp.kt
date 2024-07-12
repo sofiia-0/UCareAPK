@@ -1,10 +1,10 @@
-package com.example.ucareapk.pantallaslogin
+package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +26,8 @@ import com.example.ucareapk.ui.components.GrupoRegresar
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun FramePantallaLogIn(modifier: Modifier = Modifier) {
+fun PantallaSignUp(modifier: Modifier = Modifier) {
+    var usuario by remember { mutableStateOf("") }
     var correo by remember { mutableStateOf("") }
     var contraseña by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -79,7 +80,7 @@ fun FramePantallaLogIn(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append("Iniciá Sesión en \n")
+                        append("Creá tu cuenta en \n")
                     }
                     withStyle(
                         style = SpanStyle(
@@ -99,7 +100,7 @@ fun FramePantallaLogIn(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append(" ☆⌒(ゝ｡ ∂)")
+                        append(" ヾ(๑•｡•๑)◞ • *✰")
                     }
                 },
                 modifier = Modifier
@@ -115,6 +116,15 @@ fun FramePantallaLogIn(modifier: Modifier = Modifier) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    CustomTextField(
+                        label = "Usuario",
+                        iconId = R.drawable.iconusuario,
+                        contentDescription = "iconusuario",
+                        text = usuario,
+                        onTextChanged = { usuario = it }
+                    )
+                    Spacer(modifier = Modifier.height(15.dp))
+
                     CustomTextField(
                         label = "Correo",
                         iconId = R.drawable.iconcorreo,
@@ -189,6 +199,6 @@ fun FramePantallaLogIn(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-private fun FramePantallaLogInPreview() {
-    FramePantallaLogIn(Modifier)
+private fun PantallaSignUpPreview() {
+    PantallaSignUp(Modifier)
 }
