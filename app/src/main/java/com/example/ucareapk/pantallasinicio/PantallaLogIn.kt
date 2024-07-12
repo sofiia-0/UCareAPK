@@ -20,13 +20,14 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.ucareapk.R
 import com.example.ucareapk.ui.components.CustomTextField
 import com.example.ucareapk.ui.components.GrupoRegresar
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun FramePantallaLogIn(modifier: Modifier = Modifier) {
+fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifier) {
     var correo by remember { mutableStateOf("") }
     var contraseña by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -186,9 +187,10 @@ fun FramePantallaLogIn(modifier: Modifier = Modifier) {
         }
     }
 }
-
+/*
 @Preview
 @Composable
 private fun FramePantallaLogInPreview() {
     FramePantallaLogIn(Modifier)
 }
+*/

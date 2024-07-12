@@ -20,6 +20,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.ucareapk.R
 import com.example.ucareapk.ui.components.CustomTextField
 import com.example.ucareapk.ui.components.GrupoRegresar
@@ -197,8 +198,10 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
     }
 }
 
+/*
 @Preview
 @Composable
 private fun PantallaSignUpPreview() {
     PantallaSignUp(Modifier)
 }
+*/
