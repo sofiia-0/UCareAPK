@@ -2,6 +2,7 @@ package com.example.ucareapk.pantallasActividad
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +15,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ucareapk.R
+import com.example.ucareapk.entity.Actividad
 
 
 @Composable
@@ -54,6 +60,8 @@ fun PantallaActividad(navController: NavController, padding: PaddingValues) {
         TitleSection()
         Spacer(modifier = Modifier.height(16.dp))
         ActionButtons(navController)
+        Spacer(modifier = Modifier.height(16.dp))
+        lazyData()
     }
 }
 
@@ -157,6 +165,50 @@ fun ActionButtons(navController: NavController) {
                 tint = Color.White,
                 modifier = Modifier.size(24.dp)
             )
+        }
+    }
+}
+
+@Composable
+fun lazyData() {
+    val actividades = listOf(
+        Actividad(1,false, "personal", "2024-07-20", "10:00 AM", "Ir al super"),
+        Actividad(2,false, "academica", "2024-07-29", "11:00 AM", "Estudiar para Base de datos"),
+        Actividad(3,false, "academica", "2024-07-30", "11:00 AM", "Entregar avances de proyecto"),
+        Actividad(4,true, "academica", "2024-07-30", "11:00 AM", "Realizar tarea de analisis")
+    )
+
+    LazyColumn(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        items(actividades) { actividad ->
+            Card(
+                modifier = Modifier
+
+                    .fillMaxWidth()
+                    .padding(5.dp)
+                    .clickable {
+                        // Aquí puedes agregar la lógica para navegar al detalle de la actividad
+                        // navController.navigate(DetailAgenda(actividad.id))
+                    },
+                colors = CardDefaults.cardColors(containerColor = Color(0xFF9CA57B)),
+                elevation = CardDefaults.cardElevation(8.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Text(text = actividad.nombre, fontWeight = FontWeight.Bold, color = Color.White)
+                    Text(text = actividad.etiqueta, color = Color.White)
+                    Text(text = actividad.fechaLimite, color = Color.White)
+                    Text(text = actividad.horaLimite, color = Color.White)
+                    Text(text = if (actividad.completada) "Realizada" else "No realizada", color = Color.White)
+                }
+            }
         }
     }
 }
