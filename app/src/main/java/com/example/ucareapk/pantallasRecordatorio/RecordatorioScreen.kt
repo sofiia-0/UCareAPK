@@ -81,7 +81,7 @@ fun PantallaRecordatorio(navController: NavController, padding: PaddingValues) {
             horizontalArrangement = Arrangement.Start
         ) {
             TextButton(
-                onClick = { /* TODO: Handle back button click */ },
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .height(48.dp)
                     .padding(horizontal = 16.dp)

@@ -2,6 +2,7 @@ package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -185,13 +186,14 @@ fun PantallaSignUp(navController: NavController, modifier: Modifier = Modifier) 
                     textAlign = TextAlign.Center,
                     style = TextStyle(
                         fontFamily = dmsansFamily,
-                        fontSize = 17.sp
+                        fontSize = 17.sp,
                     ),
                     modifier = Modifier
                         .align(Alignment.CenterStart)
                         .offset(x = 19.dp, y = 1.dp)
                         .requiredWidth(124.dp)
                         .requiredHeight(24.dp)
+                        .clickable { navController.navigate("pantallahome") }
                 )
             }
         }

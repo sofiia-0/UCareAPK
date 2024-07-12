@@ -76,7 +76,7 @@ fun Recordatorios(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.width(16.dp))
             Button(
-                onClick = {  },
+                onClick = { navController.popBackStack() },
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD5E8C8)),
                 modifier = Modifier

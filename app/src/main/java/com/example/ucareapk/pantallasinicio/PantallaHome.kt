@@ -38,15 +38,15 @@ fun PantallaHome(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .offset(x = 15.dp),
+            .offset(y = (-50).dp),
         contentAlignment = Alignment.Center
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(50.dp), // Espacio entre cada icono
+            horizontalArrangement = Arrangement.spacedBy(30.dp), // Espacio entre cada icono
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 95.dp, top = 680.dp, end = 95.dp) // Ajuste de los márgenes
+                .padding(start = 95.dp, top = 764.dp, end = 95.dp) // Ajuste de los márgenes
         ) {
             Image(
                 painter = painterResource(id = R.drawable.iconhome),
@@ -58,12 +58,13 @@ fun PantallaHome(navController: NavController, modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.iconrecordatorio),
                 contentDescription = "IconRecordatorio",
                 modifier = Modifier.size(21.dp)
+                    .clickable { navController.navigate("recordatorios") }
             )
             Image(
                 painter = painterResource(id = R.drawable.iconactividades),
                 contentDescription = "IconActividades",
                 modifier = Modifier.size(21.dp)
-                    .clickable { navController.navigate("actividad") }
+                    .clickable { navController.navigate("actividades") }
             )
             Image(
                 painter = painterResource(id = R.drawable.iconestadodeanimo),

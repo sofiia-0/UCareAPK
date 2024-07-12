@@ -55,7 +55,7 @@ fun PantallaActividad(navController: NavController, padding: PaddingValues) {
             .padding(10.dp)
     ) {
         Spacer(modifier = Modifier.height(30.dp))
-        BackButton()
+        BackButton(navController)
         Spacer(modifier = Modifier.height(16.dp))
         TitleSection()
         Spacer(modifier = Modifier.height(16.dp))
@@ -67,9 +67,9 @@ fun PantallaActividad(navController: NavController, padding: PaddingValues) {
 
 
 @Composable
-fun BackButton() {
+fun BackButton(navController: NavController) {
     TextButton(
-        onClick = { /* TODO: Handle back button click */ },
+        onClick = { navController.popBackStack() },
         modifier = Modifier
             .height(48.dp)
             .padding(horizontal = 16.dp)

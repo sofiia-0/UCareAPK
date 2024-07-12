@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.ucareapk.navigate.AppNavigate
 import com.example.ucareapk.pantallasActividad.PantallaActividad
 import com.example.ucareapk.pantallasinicio.PantallaHome
 import com.example.ucareapk.pantallasinicio.PantallaInicio
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            AppNavigate()
         }
     }
 }
