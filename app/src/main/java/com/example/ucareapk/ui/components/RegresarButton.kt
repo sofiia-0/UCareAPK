@@ -19,7 +19,7 @@ import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun GrupoRegresar(modifier: Modifier = Modifier) {
+fun RegresarButton(modifier: Modifier = Modifier) {
     Box(modifier = modifier
         .requiredWidth(56.dp)
     )

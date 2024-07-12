@@ -17,13 +17,12 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ucareapk.R
 import com.example.ucareapk.ui.components.CustomTextField
-import com.example.ucareapk.ui.components.GrupoRegresar
+import com.example.ucareapk.ui.components.RegresarButton
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
@@ -47,7 +46,7 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                     .requiredWidth(210.dp)
                     .requiredHeight(250.dp)
             ) {
-                GrupoRegresar()
+                RegresarButton()
                 Image(
                     painter = painterResource(id = R.drawable.pandaicon),
                     contentDescription = "Panda",

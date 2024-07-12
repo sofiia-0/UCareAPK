@@ -2,6 +2,7 @@ package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -27,11 +28,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaHome(modifier: Modifier = Modifier) {
+fun PantallaHome(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -60,6 +63,7 @@ fun PantallaHome(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.iconactividades),
                 contentDescription = "IconActividades",
                 modifier = Modifier.size(21.dp)
+                    .clickable { navController.navigate("actividad") }
             )
             Image(
                 painter = painterResource(id = R.drawable.iconestadodeanimo),
@@ -580,9 +584,9 @@ fun PantallaHome(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 1.dp))
     }
 }
-
+/*
 @Preview
 @Composable
 private fun PantallaHomePreview() {
     PantallaHome(Modifier)
-}
+}*/
