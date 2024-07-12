@@ -8,22 +8,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.ucareapk.pantallaslogin.PantallaInicio
-import com.example.ucareapk.pantallaslogin.PantallaSignUp
+import com.example.ucareapk.pantallasinicio.PantallaSignUp
 import com.example.ucareapk.ui.theme.UCareAPKTheme
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.ucareapk.pantallasActividad.PantallaActividad
+import com.example.ucareapk.pantallasinicio.PantallaHome
+import com.example.ucareapk.pantallasinicio.PantallaInicio
+import com.example.ucareapk.pantallasinicio.PantallaSignUp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            UCareAPKTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallaSignUp(modifier = Modifier.padding(innerPadding))
-                }
 
-            }
         }
     }
 }
-

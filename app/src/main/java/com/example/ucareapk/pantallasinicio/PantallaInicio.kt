@@ -1,7 +1,8 @@
-package com.example.ucareapk.pantallaslogin
+package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -30,7 +31,7 @@ import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaInicio(modifier: Modifier = Modifier) {
+fun PantallaInicio(onNavigateToSignUp: () -> Unit, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -70,7 +71,9 @@ fun PantallaInicio(modifier: Modifier = Modifier) {
                         .offset(x = 0.5.dp,
                             y = (-27).dp)
                         .requiredWidth(width = 101.dp)
-                        .requiredHeight(height = 24.dp))
+                        .requiredHeight(height = 24.dp)
+                        .clickable { onNavigateToSignUp() }
+                )
                 Text(
                     text = "Iniciar sesión",
                     color = Color.Gray,
@@ -168,9 +171,10 @@ fun PantallaInicio(modifier: Modifier = Modifier) {
         }
     }
 }
-
+/*
 @Preview
 @Composable
 private fun PantallaInicioPreview() {
     PantallaInicio(Modifier)
 }
+*/

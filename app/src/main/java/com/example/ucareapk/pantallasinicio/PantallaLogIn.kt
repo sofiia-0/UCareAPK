@@ -1,29 +1,11 @@
-package com.example.ucareapk.pantallaslogin
+package com.example.ucareapk.pantallasinicio
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,19 +17,21 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.ucareapk.R
+import com.example.ucareapk.pantallasActividad.BackButtonAct
 import com.example.ucareapk.ui.components.CustomTextField
-import com.example.ucareapk.ui.components.GrupoRegresar
+import com.example.ucareapk.ui.components.RegresarButton
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaSignUp(modifier: Modifier = Modifier) {
-    var usuario by remember { mutableStateOf("") }
+fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifier) {
     var correo by remember { mutableStateOf("") }
     var contraseña by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -63,7 +47,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                     .requiredWidth(210.dp)
                     .requiredHeight(250.dp)
             ) {
-                GrupoRegresar()
+                BackButtonAct(navController)
                 Image(
                     painter = painterResource(id = R.drawable.pandaicon),
                     contentDescription = "Panda",
@@ -96,7 +80,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append("Creá tu cuenta en \n")
+                        append("Iniciá Sesión en \n")
                     }
                     withStyle(
                         style = SpanStyle(
@@ -116,7 +100,7 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                             fontWeight = FontWeight.Bold
                         )
                     ) {
-                        append(" ヾ(๑•｡•๑)◞ • *✰")
+                        append(" ☆⌒(ゝ｡ ∂)")
                     }
                 },
                 modifier = Modifier
@@ -128,21 +112,10 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .requiredWidth(273.dp)
                     .requiredHeight(189.dp)
-            )
-
-            {
+            ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    CustomTextField(
-                        label = "Usuario",
-                        iconId = R.drawable.iconusuario,
-                        contentDescription = "iconusuario",
-                        text = usuario,
-                        onTextChanged = { usuario = it }
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-
                     CustomTextField(
                         label = "Correo",
                         iconId = R.drawable.iconcorreo,
@@ -157,14 +130,15 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                         iconId = R.drawable.iconcontrasenia,
                         contentDescription = "iconcontrasenia",
                         text = contraseña,
-                        onTextChanged = { contraseña = it }
+                        onTextChanged = { contraseña = it },
+                        isPassword = true,
+                        passwordVisible = passwordVisible,
+                        onPasswordVisibilityChanged = { passwordVisible = !passwordVisible }
                     )
                 }
-
             }
 
             Spacer(modifier = Modifier.height(40.dp)) // Espacio entre los TextField y el botón "Continuar"
-
 
             Box(
                 modifier = Modifier
@@ -200,8 +174,9 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = TextStyle(
-                        fontFamily = dmsansFamily
-                        ,fontSize = 17.sp),
+                        fontFamily = dmsansFamily,
+                        fontSize = 17.sp
+                    ),
                     modifier = Modifier
                         .align(Alignment.CenterStart)
                         .offset(x = 19.dp, y = 1.dp)
@@ -211,11 +186,11 @@ fun PantallaSignUp(modifier: Modifier = Modifier) {
             }
         }
     }
-
 }
-
+/*
 @Preview
 @Composable
-private fun PantallaSignUpPreview() {
-    PantallaSignUp(Modifier)
+private fun FramePantallaLogInPreview() {
+    FramePantallaLogIn(Modifier)
 }
+*/
