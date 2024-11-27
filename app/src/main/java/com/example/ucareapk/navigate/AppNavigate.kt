@@ -41,5 +41,3 @@ fun AppNavigate() {
         composable("home") { PantallaHome(navController) }
         composable("actividad") { PantallaActividad(navController, padding = PaddingValues()) }
     }*/
-
-}

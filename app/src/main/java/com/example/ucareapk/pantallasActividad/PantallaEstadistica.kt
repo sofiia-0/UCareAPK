@@ -18,7 +18,8 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.navigation.NavHostController
 
 @Composable
-fun EstadisticasScreen(navController: NavHostController, padding: PaddingValues) {
+fun EstadisticasScreen(navController: NavHostController) {
+
     var reporteSeleccionado by remember { mutableStateOf("Mensual") }
 
     val datosMensuales = listOf(50f, 75f, 25f, 90f, 60f)
