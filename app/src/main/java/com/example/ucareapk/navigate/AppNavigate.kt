@@ -30,6 +30,7 @@ fun AppNavigate() {
         composable("Recordatorio") { Recordatorios(navController) }
         composable("AgregarRecordatorio") { AgregarRecordatorio(navController) }
 
+
         // Pantalla Estadísticas añadida
         composable("estadisticas") {
             EstadisticasScreen(navController)}
