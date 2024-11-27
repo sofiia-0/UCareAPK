@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ucareapk.pantallasActividad.CrearActividad
+import com.example.ucareapk.pantallasActividad.EstadisticasScreen
 import com.example.ucareapk.pantallasActividad.PantallaActividad
 import com.example.ucareapk.pantallasRecordatorio.AgregarRecordatorio
 import com.example.ucareapk.pantallasRecordatorio.PantallaRecordatorio
@@ -17,10 +18,7 @@ import com.example.ucareapk.pantallasinicio.PantallaSignUp
 @Composable
 fun AppNavigate() {
     val navController = rememberNavController()
-   /* NavHost(navController, startDestination = "home") {
-        composable("actividades") { PantallaActividad(navController = navController, padding = PaddingValues()) }
-        composable("crearActividad") { CrearActividad(navController) }
-    }*/
+
 
     NavHost(navController = navController, startDestination = "pantallaInicio") {
         composable("pantallaInicio") { PantallaInicio(onNavigateToSignUp = { navController.navigate("pantallaSignUp") }) }
@@ -31,6 +29,12 @@ fun AppNavigate() {
         composable("recordatorios") { PantallaRecordatorio(navController = navController, padding = PaddingValues()) }
         composable("Recordatorio") { Recordatorios(navController) }
         composable("AgregarRecordatorio") { AgregarRecordatorio(navController) }
+
+        // Pantalla Estadísticas añadida
+        composable("estadisticas") {
+            EstadisticasScreen(navController)}
+        }
+
     }
 
     /*NavHost(navController = navController, startDestination = "home") {
