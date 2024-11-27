@@ -135,8 +135,7 @@ fun PantallaHomePsicologo( modifier: Modifier = Modifier) {
             Box(
                 modifier = Modifier
                     .align(alignment = Alignment.TopStart)
-                    .offset(x = 173.dp,
-                        y = 118.dp)
+                    .offset(x = 173.dp, y = 118.dp)
                     .requiredWidth(width = 163.dp)
                     .requiredHeight(height = 102.dp)
             ) {
