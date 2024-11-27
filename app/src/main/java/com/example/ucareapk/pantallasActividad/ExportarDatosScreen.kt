@@ -23,6 +23,7 @@ fun ExportarDatosScreen(navController: NavHostController, padding: PaddingValues
     var correo by remember { mutableStateOf("") }
     var formatoSeleccionado by remember { mutableStateOf("CSV") }
 
+
     val context = LocalContext.current  // Obtén el contexto aquí, dentro de @Composable
 
     Column(

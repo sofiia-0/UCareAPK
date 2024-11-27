@@ -17,8 +17,10 @@ import com.example.ucareapk.pantallasinicio.PantallaHome
 import com.example.ucareapk.pantallasinicio.PantallaInicio
 import com.example.ucareapk.pantallasinicio.PantallaSignUp
 
+
 @Composable
 fun AppNavigate() {
+
     val navController = rememberNavController()
     NavHost(
         navController = navController,

@@ -23,6 +23,7 @@ fun EstadisticasScreen(navController: NavHostController) {
     var reporteSeleccionado by remember { mutableStateOf("Mensual") }
 
 
+
     val datosMensuales = listOf(50f, 75f, 25f, 90f, 60f)
     val datosSemanales = listOf(8f, 12f, 10f, 15f, 9f)
 
