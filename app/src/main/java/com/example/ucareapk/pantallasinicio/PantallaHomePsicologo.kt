@@ -34,7 +34,7 @@ import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaHomePsicologo(navController: NavController, modifier: Modifier = Modifier) {
+fun PantallaHomePsicologo( modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -193,7 +193,7 @@ fun PantallaHomePsicologo(navController: NavController, modifier: Modifier = Mod
                         .fillMaxSize()
                 )
                 Text(
-                    text = "Actividades",
+                    text = "Citas",
                     color = Color(0xff645e5f),
                     textAlign = TextAlign.Center,
                     style = TextStyle(
