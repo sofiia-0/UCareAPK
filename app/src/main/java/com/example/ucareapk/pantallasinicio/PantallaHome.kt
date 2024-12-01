@@ -71,6 +71,7 @@ fun PantallaHome(navController: NavController, modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.iconestadodeanimo),
                 contentDescription = "IconEstadoDeAnimo",
                 modifier = Modifier.size(21.dp)
+                    .clickable { navController.navigate("estadoanimo") }
             )
         }
         Box(
