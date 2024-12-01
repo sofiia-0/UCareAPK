@@ -19,6 +19,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -69,7 +71,7 @@ fun CitasPsicologo(navController: NavController, padding: PaddingValues) {
         Spacer(modifier = Modifier.height(10.dp))
         BotonesCitas()
         Spacer(modifier = Modifier.height(10.dp))
-        CitasData()
+        CitasData(navController)
     }
 }
 
@@ -190,12 +192,17 @@ fun BotonesCitas() {
 }
 
 @Composable
-fun CitasData() {
-    val citas = listOf(
-        Citas(1,"Maria", "Alejandra", "2024-07-20", "10:00 AM", "Pendiente"),
-        Citas(3,"Mario", "Alfredo", "2024-06-20", "10:00 AM", "Completado"),
-        Citas(2,"Juan", "Juanin", "2024-07-28", "10:00 AM", "Cancelada")
-    )
+fun CitasData(navController: NavController) {
+    // Estado para mantener la lista de citas (mutable para que se pueda actualizar)
+    var citas by remember {
+        mutableStateOf(
+            listOf(
+                Citas(1, "Maria", "Alejandra", "2024-07-20", "10:00 AM", "Pendiente"),
+                Citas(3, "Mario", "Alfredo", "2024-06-20", "10:00 AM", "Completado"),
+                Citas(2, "Juan", "Juanin", "2024-07-28", "10:00 AM", "Cancelada")
+            )
+        )
+    }
 
     LazyColumn(
         verticalArrangement = Arrangement.Center,
@@ -215,60 +222,73 @@ fun CitasData() {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(5.dp)
-                    .clickable {
-                        expanded = true // Muestra el menú de opciones cuando la tarjeta es tocada
-                    },
+                    .padding(5.dp),
                 colors = CardDefaults.cardColors(containerColor = backgroundColor), // Asignamos el color al Card
                 elevation = CardDefaults.cardElevation(8.dp)
             ) {
-                Column(
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.Start
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(
-                        text = "${cita.estudianteNombre} ${cita.estudianteApellido}",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp, // Tamaño de fuente más grande
-                        color = Color.White
-                    )
-                    Text(text = cita.fechaLimite, color = Color.White)
-                    Text(text = cita.horaLimite, color = Color.White)
-                    Text(
-                        text = "Estado: ${cita.estado}",
-                        color = Color.White
-                    )
-                }
-            }
+                    Column {
+                        Text(
+                            text = "${cita.estudianteNombre} ${cita.estudianteApellido}",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp, // Tamaño de fuente más grande
+                            color = Color.White
+                        )
+                        Text(text = cita.fechaLimite, color = Color.White)
+                        Text(text = cita.horaLimite, color = Color.White)
+                        Text(
+                            text = "Estado: ${cita.estado}",
+                            color = Color.White
+                        )
+                    }
 
-            // Mostrar el menú de opciones cuando la tarjeta es tocada
-            if (expanded) {
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false } // Cerrar el menú cuando el usuario haga clic fuera
-                ) {
-                    DropdownMenuItem(
-                        text = { Text("Cancelar") },
-                        onClick = {
-                            // Aquí puedes implementar la lógica de cancelación
-                            // Por ejemplo, puedes cambiar el estado de la cita a "Cancelada" en tu lista o ViewModel
-                            expanded = false
+                    // Botón de menú de tres puntos
+                    Box {
+                        IconButton(
+                            onClick = { expanded = true } // Abrir el menú al hacer clic
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.MoreVert,
+                                contentDescription = "Opciones",
+                                tint = Color.White
+                            )
                         }
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Editar") },
-                        onClick = {
-                            // No hace nada por ahora, solo cierra el menú
-                            expanded = false
+
+                        // Menú desplegable
+                        DropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false } // Cerrar el menú
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text("Cancelar") },
+                                onClick = {
+                                    citas = citas.map { currentCita ->
+                                        if (currentCita.id == cita.id) {
+                                            currentCita.copy(estado = "Cancelada")
+                                        } else {
+                                            currentCita
+                                        }
+                                    }
+                                    expanded = false
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Editar") },
+                                onClick = {
+                                    navController.navigate("EdicionCitas")
+                                    expanded = false
+                                }
+                            )
                         }
-                    )
+                    }
                 }
             }
         }
     }
 }
-
-
