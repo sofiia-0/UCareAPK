@@ -2,6 +2,7 @@ package com.example.ucareapk.pantallasinicio
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -23,7 +25,6 @@ import androidx.navigation.NavController
 import com.example.ucareapk.R
 import com.example.ucareapk.pantallasActividad.BackButtonAct
 import com.example.ucareapk.ui.components.CustomTextField
-import com.example.ucareapk.ui.components.RegresarButton
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
@@ -42,10 +43,12 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            // Parte superior con imágenes y saludo
             Box(
                 modifier = Modifier
                     .requiredWidth(210.dp)
                     .requiredHeight(250.dp)
+                    .clickable { navController.navigate("PantallaInicio") }
             ) {
                 BackButtonAct(navController)
                 Image(
@@ -67,8 +70,9 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                 )
             }
 
-            Spacer(modifier = Modifier.height(10.dp)) // Espacio entre pandaicon y el texto
+            Spacer(modifier = Modifier.height(10.dp))
 
+            // Título
             Text(
                 textAlign = TextAlign.Center,
                 text = buildAnnotatedString {
@@ -108,6 +112,7 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                     .padding(bottom = 20.dp)
             )
 
+            // Campos de texto
             Box(
                 modifier = Modifier
                     .requiredWidth(273.dp)
@@ -138,12 +143,14 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp)) // Espacio entre los TextField y el botón "Continuar"
+            Spacer(modifier = Modifier.height(40.dp))
 
+            // Botón "Continuar"
             Box(
                 modifier = Modifier
                     .requiredWidth(193.dp)
                     .requiredHeight(47.dp)
+                    .clickable { navController.navigate("PantallaHome") }
             ) {
                 Box(
                     modifier = Modifier
@@ -184,13 +191,20 @@ fun FramePantallaLogIn(navController: NavController, modifier: Modifier = Modifi
                         .requiredHeight(24.dp)
                 )
             }
+
+            // Texto clickeable "¿Olvidaste tu contraseña? Click aquí"
+            Spacer(modifier = Modifier.height(16.dp)) // Espaciado debajo del botón
+            Text(
+                text = "¿Olvidaste tu contraseña? Click aquí",
+                color = Color.Blue,
+                fontSize = 14.sp,
+                textDecoration = TextDecoration.Underline,
+                fontFamily = dmsansFamily,
+                modifier = Modifier.clickable {
+                    // Navegar a la pantalla correspondiente
+                    navController.navigate("RecuperarCuenta")
+                }
+            )
         }
     }
 }
-/*
-@Preview
-@Composable
-private fun FramePantallaLogInPreview() {
-    FramePantallaLogIn(Modifier)
-}
-*/

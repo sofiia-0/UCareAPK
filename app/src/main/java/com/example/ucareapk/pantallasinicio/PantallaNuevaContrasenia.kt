@@ -49,7 +49,7 @@ import com.example.ucareapk.ui.components.CustomTextField
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaNuevaContrasenia(modifier: Modifier = Modifier) {
+fun PantallaNuevaContrasenia(navController: NavController, modifier: Modifier = Modifier) {
     var nuevaContrasenia by remember { mutableStateOf("") }
     var confirmarContrasenia by remember { mutableStateOf("") }
 
@@ -69,7 +69,7 @@ fun PantallaNuevaContrasenia(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { /* Acción para regresar */ }
+                    .clickable { navController.navigate("VerificarCodigo") }
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.iconregresar), // Reemplaza con tu recurso
@@ -139,7 +139,7 @@ fun PantallaNuevaContrasenia(modifier: Modifier = Modifier) {
 
             // Botón de cambiar contraseña
             Button(
-                onClick = { /* Acción para cambiar contraseña */ },
+                onClick = {  navController.navigate("PantallaLogIn") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9CA57B)),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier

@@ -37,8 +37,10 @@ fun PantallaSignUp(navController: NavController, modifier: Modifier = Modifier) 
     Box(
         modifier = modifier
             .fillMaxSize()
+            .clickable { navController.navigate("PantallaInicio") }
             .requiredWidth(400.dp)
             .requiredHeight(800.dp),
+
         contentAlignment = Alignment.Center
     ) {
         Column(

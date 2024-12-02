@@ -31,47 +31,47 @@ import com.example.ucareapk.R
 import com.example.ucareapk.ui.theme.dmsansFamily
 
 @Composable
-fun PantallaInicio(onNavigateToSignUp: () -> Unit, modifier: Modifier = Modifier) {
+fun PantallaInicio(
+    onNavigateToSignUp: () -> Unit,
+    onNavigateToLogIn: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         Box(
             modifier = Modifier
-                .align(alignment = Alignment.Center)
-                .requiredWidth(width = 273.dp)
-                .requiredHeight(height = 521.dp)
+                .align(Alignment.Center)
+                .requiredWidth(273.dp)
+                .requiredHeight(521.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .align(alignment = Alignment.TopStart)
-                    .offset(x = 1.dp,
-                        y = 417.dp)
-                    .requiredWidth(width = 272.dp)
-                    .requiredHeight(height = 104.dp)
+                    .align(Alignment.TopStart)
+                    .offset(x = 1.dp, y = 417.dp)
+                    .requiredWidth(272.dp)
+                    .requiredHeight(104.dp)
             ) {
                 Box(
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = 0.dp,
-                            y = (-27.5).dp)
-                        .requiredWidth(width = 272.dp)
-                        .requiredHeight(height = 49.dp)
-                        .clip(shape = RoundedCornerShape(16.dp))
-                        .background(color = Color(0xff9ca57b)))
+                        .align(Alignment.Center)
+                        .offset(y = (-27.5).dp)
+                        .requiredWidth(272.dp)
+                        .requiredHeight(49.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color(0xff9ca57b))
+                )
                 Text(
                     text = "Registrarme",
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = TextStyle(
                         fontSize = 17.sp,
-                        fontFamily = dmsansFamily),
+                        fontFamily = dmsansFamily
+                    ),
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = 0.5.dp,
-                            y = (-27).dp)
-                        .requiredWidth(width = 101.dp)
-                        .requiredHeight(height = 24.dp)
+                        .align(Alignment.Center)
+                        .offset(y = (-27).dp)
                         .clickable { onNavigateToSignUp() }
                 )
                 Text(
@@ -80,101 +80,58 @@ fun PantallaInicio(onNavigateToSignUp: () -> Unit, modifier: Modifier = Modifier
                     textAlign = TextAlign.Center,
                     style = TextStyle(
                         fontSize = 17.sp,
-                        fontFamily = dmsansFamily),
+                        fontFamily = dmsansFamily
+                    ),
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = (-2).dp,
-                            y = 40.dp)
-                        .requiredWidth(width = 204.dp)
-                        .requiredHeight(height = 24.dp))
+                        .align(Alignment.Center)
+                        .offset(y = 40.dp)
+                        .clickable { onNavigateToLogIn() }
+                )
             }
             Box(
                 modifier = Modifier
-                    .requiredWidth(width = 272.dp)
-                    .requiredHeight(height = 350.dp)
+                    .requiredWidth(272.dp)
+                    .requiredHeight(350.dp)
             ) {
-                Box(
+                Image(
+                    painter = painterResource(id = R.drawable.pandaicon),
+                    contentDescription = "Panda",
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = (-16).dp,
-                            y = 169.5.dp)
-                        .requiredWidth(width = 12.dp)
-                        .requiredHeight(height = 11.dp)
-                        .clip(shape = RoundedCornerShape(16.dp))
-                        .background(color = Color(0xff9ca57b)))
-                Box(
+                        .align(Alignment.Center)
+                        .offset(y = 10.dp)
+                        .requiredWidth(209.dp)
+                        .requiredHeight(190.dp)
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.holabubble),
+                    contentDescription = "BubbleTextHola",
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = 10.dp,
-                            y = 169.5.dp)
-                        .requiredWidth(width = 28.dp)
-                        .requiredHeight(height = 11.dp)
-                        .clip(shape = RoundedCornerShape(16.dp))
-                        .background(brush = Brush.linearGradient(
-                            0f to Color(0xffd2d8bc),
-                            1f to Color(0xffadb882),
-                            start = Offset(14f, 0f),
-                            end = Offset(14f, 11f))))
-                Box(
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopStart)
-                        .offset(x = 23.dp,
-                            y = 0.dp)
-                        .requiredWidth(width = 212.dp)
-                        .requiredHeight(height = 210.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pandaicon),
-                        contentDescription = "Panda",
-                        modifier = Modifier
-                            .align(alignment = Alignment.Center)
-                            .offset(x = (-1.5).dp,
-                                y = 10.dp)
-                            .requiredWidth(width = 209.dp)
-                            .requiredHeight(height = 190.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.holabubble),
-                        contentDescription = "BubbleTextHola",
-                        modifier = Modifier
-                            .align(alignment = Alignment.Center)
-                            .offset(x = 49.5.dp,
-                                y = (-77.83333396911621).dp)
-                            .requiredWidth(width = 113.dp)
-                            .requiredHeight(height = 54.dp))
-                }
+                        .align(Alignment.Center)
+                        .offset(x = 49.5.dp, y = (-77.83).dp)
+                        .requiredWidth(113.dp)
+                        .requiredHeight(54.dp)
+                )
                 Text(
                     textAlign = TextAlign.Center,
                     text = buildAnnotatedString {
-                        withStyle(style = SpanStyle(
-                            color = Color(0xff5a4d4b),
-                            fontSize = 22.sp,
-                            fontFamily = dmsansFamily,
-                            fontWeight = FontWeight.Bold)
-                        ) {append("Un sistema de cuidado ")}
-                        withStyle(style = SpanStyle(
-                            color = Color(0xff9ca57b),
-                            fontSize = 22.sp,
-                            fontFamily = dmsansFamily,
-                            fontWeight = FontWeight.Bold)) {append("para tu ")}
-                        withStyle(style = SpanStyle(
-                            color = Color(0xff5a4d4b),
-                            fontSize = 22.sp,
-                            fontFamily = dmsansFamily,
-                            fontWeight = FontWeight.Bold)) {append("bienestar")}},
+                        withStyle(style = SpanStyle(color = Color(0xff5a4d4b), fontSize = 22.sp, fontWeight = FontWeight.Bold)) {
+                            append("Un sistema de cuidado ")
+                        }
+                        withStyle(style = SpanStyle(color = Color(0xff9ca57b), fontSize = 22.sp, fontWeight = FontWeight.Bold)) {
+                            append("para tu ")
+                        }
+                        withStyle(style = SpanStyle(color = Color(0xff5a4d4b), fontSize = 22.sp, fontWeight = FontWeight.Bold)) {
+                            append("bienestar")
+                        }
+                    },
                     modifier = Modifier
-                        .align(alignment = Alignment.Center)
-                        .offset(x = 0.dp,
-                            y = 104.dp)
-                        .requiredWidth(width = 272.dp)
-                        .requiredHeight(height = 60.dp))
+                        .align(Alignment.Center)
+                        .offset(y = 104.dp)
+                        .requiredWidth(272.dp)
+                        .requiredHeight(60.dp)
+                )
             }
         }
     }
 }
-/*
-@Preview
-@Composable
-private fun PantallaInicioPreview() {
-    PantallaInicio(Modifier)
-}
-*/
+

@@ -1,38 +1,28 @@
-package com.example.ucareapk.pantallasActividad
-
-
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 
 @Composable
-fun ExportarDatosScreen(navController: NavHostController, padding: PaddingValues) {
-
-
+fun ExportarDatosScreen(modifier: Modifier = Modifier) {
     var nombre by remember { mutableStateOf("") }
     var correo by remember { mutableStateOf("") }
     var formatoSeleccionado by remember { mutableStateOf("CSV") }
-
-
-    val context = LocalContext.current  // Obtén el contexto aquí, dentro de @Composable
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Campo para el nombre
         OutlinedTextField(
             value = nombre,
             onValueChange = { nombre = it },
@@ -40,8 +30,9 @@ fun ExportarDatosScreen(navController: NavHostController, padding: PaddingValues
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
+        // Campo para el correo
         OutlinedTextField(
             value = correo,
             onValueChange = { correo = it },
@@ -51,14 +42,20 @@ fun ExportarDatosScreen(navController: NavHostController, padding: PaddingValues
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Tipo de Archivo")  // Cambié a body1
-        Column {
+        // Selección de formato
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(text = "Tipo de Archivo")
+
             listOf("CSV", "PDF", "Excel").forEach { formato ->
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                ) {
                     RadioButton(
-                        selected = (formatoSeleccionado == formato),
+                        selected = formatoSeleccionado == formato,
                         onClick = { formatoSeleccionado = formato }
                     )
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(text = formato)
                 }
             }
@@ -66,19 +63,8 @@ fun ExportarDatosScreen(navController: NavHostController, padding: PaddingValues
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        Button(
-            onClick = {
-
-
-                // Ahora el Toast se muestra correctamente dentro de un @Composable
-                Toast.makeText(
-                    context,  // Usando 'context' que ahora está dentro del contexto @Composable
-                    "Datos exportados como $formatoSeleccionado",
-                    Toast.LENGTH_SHORT
-                ).show()
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
+        // Botón Exportar
+        Button(onClick = {  }) {
             Text(text = "Exportar")
         }
     }
