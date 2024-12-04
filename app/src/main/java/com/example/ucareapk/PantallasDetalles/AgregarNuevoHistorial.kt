@@ -20,7 +20,7 @@ import com.example.ucareapk.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HistorialScreen(navController: NavHostController, padding: PaddingValues) {
+fun HistorialScreen(navController: NavHostController) {
     var tema by remember { mutableStateOf("") }
     var fecha by remember { mutableStateOf("") }
     var tiempo by remember { mutableStateOf("") }
@@ -149,7 +149,7 @@ fun HistorialScreen(navController: NavHostController, padding: PaddingValues) {
 
         // Botón de confirmar
         Button(
-            onClick = { /* Acción de guardar historial */ },
+            onClick = { navController.navigate("PantallaDetalle") },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)),
             modifier = Modifier
                 .size(width = 80.dp, height = 50.dp)

@@ -5,6 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.ucareapk.PantallasDetalles.DetalleEstudiante
+import com.example.ucareapk.PantallasDetalles.HistorialScreen
+import com.example.ucareapk.PantallasDetalles.NotaScreen
 import com.example.ucareapk.pantallaEstadoAnimo.PantallaEstadoAnimo
 import com.example.ucareapk.pantallaEstadoAnimo.RegistroAnimo
 import com.example.ucareapk.pantallasActividad.CrearActividad
@@ -82,6 +85,10 @@ fun AppNavigate() {
 
         // Nuevo Estado de animo
         composable("NuevoAnimo") { RegistroAnimo(navController)
+
+            composable("PantallaDetalle") { DetalleEstudiante(navController, PaddingValues()) }
+            composable("AgregarNota") { NotaScreen(navController) }
+            composable("AgregarSesion") { HistorialScreen(navController) }
 
     }
 
